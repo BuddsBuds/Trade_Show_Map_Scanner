@@ -1,0 +1,63 @@
+# Testing Environment Configuration
+
+# Service Configuration
+service:
+  name: tradeshowscout-ocr
+  host: 0.0.0.0
+  port: 8001
+  debug: true
+  environment: testing  # This must be 'testing' to match our test expectations
+
+# OCR Configuration
+ocr:
+  tesseract_path: /usr/local/bin/tesseract
+  min_confidence: 0.6  # Lower for testing
+  max_retries: 1
+  timeout: 60  # Shorter timeout for tests
+  batch_size: 2
+  language: eng
+
+# Database Configuration
+database:
+  url: postgresql://localhost:5432/tradeshowscout_test
+  pool_size: 2
+  max_overflow: 5
+  echo: true
+
+# Redis Configuration
+redis:
+  url: redis://localhost:6379/1  # Different database for testing
+  max_memory: 512mb
+  max_memory_policy: allkeys-lru
+
+# Storage Configuration
+storage:
+  upload_path: data/test/uploads
+  processed_path: data/test/processed
+  max_file_size: 5242880  # 5MB
+  allowed_extensions:
+    - .jpg
+    - .jpeg
+    - .png
+    - .pdf
+
+# Queue Configuration
+queue:
+  worker_count: 1
+  task_timeout: 60
+  max_retries: 1
+  retry_delay: 30
+
+# Monitoring
+monitoring:
+  prometheus_port: 9091  # Different port for testing
+  metrics_path: /metrics
+  collection_interval: 5
+
+# Logging
+logging:
+  level: DEBUG
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: logs/ocr-service-test.log
+  max_size: 1048576  # 1MB
+  backup_count: 2
