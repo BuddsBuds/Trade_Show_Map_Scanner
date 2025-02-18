@@ -1,0 +1,17 @@
+setup.py
+file_processor.egg-info/PKG-INFO
+file_processor.egg-info/SOURCES.txt
+file_processor.egg-info/dependency_links.txt
+file_processor.egg-info/requires.txt
+file_processor.egg-info/top_level.txt
+src/__init__.py
+src/main.py
+src/api/__init__.py
+src/api/app.py
+src/api/routes/__init__.py
+src/api/routes/file_routes.py
+src/core/__init__.py
+src/core/file_processor.py
+src/core/models.py
+src/utils/__init__.py
+src/utils/image_utils.py
